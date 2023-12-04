@@ -98,7 +98,7 @@ async def get_current_user(request: Request):
             logout(request)
         return {'username': username, 'id': user_id, 'user_role': user_role}
     except JWTError:
-        return templates.TemplateResponse('login.html', {"request": request})
+        logout(request)
 
 
 '''
