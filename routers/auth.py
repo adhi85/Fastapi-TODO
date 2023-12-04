@@ -98,8 +98,7 @@ async def get_current_user(request: Request):
             logout(request)
         return {'username': username, 'id': user_id, 'user_role': user_role}
     except JWTError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
-                            detail="Could not validate credentials")
+        return templates.TemplateResponse('login.html', {"request": request})
 
 
 '''
